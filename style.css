@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+  background-color: #f0f0f0;
+  color: #222;
+}
+
+.dark-mode {
+  background-color: #1f1f2e;
+  color: #ddd;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 0 0 8px 8px;
+}
+
+#welcome {
+  text-align: center;
+  padding: 150px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+#welcome button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 22px;
+  background: #ffb86c;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#welcome button:hover {
+  background: #ffa500;
+}
+
+#mainApp {
+  max-width: 900px;
+  margin: 20px auto 50px auto;
+  padding: 0 20px 20px 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .card {
+  background-color: #2c2c3e;
+}
+
+textarea#textInput {
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  margin-bottom: 12px;
+}
+
+.dark-mode textarea#textInput {
+  background-color: #1a1a2e;
+  border-color: #444;
+  color: #eee;
+}
+
+.color-row, .logo-row, .btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.color-row label, .logo-row label {
+  flex: 1 1 180px;
+  font-size: 14px;
+  user-select: none;
+}
+
+.color-row input[type="color"], .logo-row input[type="file"], .logo-row input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.btn-row button {
+  flex: 1 1 130px;
+  padding: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-row button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.btn-row button:hover:not(:disabled) {
+  background-color: #217dbb;
+}
+
+#qrCanvas {
+  display: block;
+  margin: 15px auto 5px auto;
+  border: 3px solid #3498db;
+  border-radius: 20px;
+  background-color: white;
+}
+
+#filePreview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 12px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+}
+
+#uploadStatus {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+  min-height: 18px;
+}
+
+#video {
+  width: 100%;
+  max-height: 320px;
+  border-radius: 12px;
+  background-color: #222;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+#scanResult {
+  font-weight: bold;
+  margin-bottom: 10px;
+  min-height: 26px;
+}
+
+#cameraPhotos img {
+  max-width: 120px;
+  max-height: 90px;
+  margin: 4px;
+  border-radius: 10px;
+  border: 2px solid #3498db;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+#cameraPhotos img:hover {
+  transform: scale(1.15);
+  border-color: #ffa500;
+}
+
+#favoritesList, #scanHistoryList {
+  list-style: none;
+  padding-left: 0;
+  max-height: 180px;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+}
+
+.dark-mode #favoritesList, .dark-mode #scanHistoryList {
+  background-color: #1a1a2e;
+  border-color: #444;
+  color: #ddd;
+}
+
+#favoritesList li, #scanHistoryList li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#favoritesList li:hover, #scanHistoryList li:hover {
+  background-color: #d7e9ff;
+}
+
+.dark-mode #favoritesList li:hover, .dark-mode #scanHistoryList li:hover {
+  background-color: #3a3a59;
+}
+
+.fav-item-text {
+  flex: 1;
+  user-select: none;
+  overflow-wrap: break-word;
+}
+
+.fav-delete-btn {
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 12px;
+  padding: 4px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.fav-delete-btn:hover {
+  background-color: #c0392b;
+}
+
+#favSearchInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.dark-mode #favSearchInput {
+  background-color: #1a1a2e;
+  border-color: #444;
+  color: #ddd;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .color-row, .logo-row, .btn-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
