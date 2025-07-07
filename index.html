@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Morchies QR Dosya Sistemi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="welcome" class="welcome-screen">
+    <h1>📦 Morchies QR Dosya Sistemi</h1>
+    <p>Kolayca dosya yükle, QR oluştur, tara, paylaş!</p>
+    <button id="btnStartApp">🚀 Başla</button>
+  </div>
+
+  <div id="mainApp" style="display:none;">
+    <header>
+      <h2>📱 QR Kodu Oluştur ve Tara</h2>
+      <button id="toggleThemeBtn" title="Karanlık Mod">🌙</button>
+    </header>
+
+    <section id="qrGenerator" class="card">
+      <h3>QR Kod Oluşturucu</h3>
+      <textarea id="textInput" placeholder="Metin, URL veya Base64 dosya kodu girin..."></textarea>
+
+      <div class="color-row">
+        <label>Koyu Renk: <input type="color" id="darkColor" value="#000000" /></label>
+        <label>Açık Renk: <input type="color" id="lightColor" value="#ffffff" /></label>
+        <button id="randomColorsBtn" title="Renkleri rastgele seç">🎨</button>
+      </div>
+
+      <div class="logo-row">
+        <label>Logo Ekle: <input type="file" id="logoInput" accept="image/*" /></label>
+        <label>Logo Opaklık: <input type="range" id="logoOpacity" min="0" max="1" step="0.05" value="1" /></label>
+      </div>
+
+      <label>QR Boyutu: <input type="range" id="qrSizeRange" min="150" max="600" value="300" /> <span
+          id="qrSizeLabel">300</span> px</label>
+
+      <div class="btn-row">
+        <button id="generateBtn">QR Oluştur</button>
+        <button id="clearBtn">Temizle</button>
+        <button id="saveFavBtn" disabled>Favorilere Ekle</button>
+        <button id="downloadBtn" disabled>İndir</button>
+      </div>
+
+      <label><input type="checkbox" id="autoCopyToggle" /> Oluşturulan metni otomatik kopyala</label>
+
+      <canvas id="qrCanvas" width="300" height="300" title="QR Kod Önizleme"></canvas>
+    </section>
+
+    <section id="fileUpload" class="card">
+      <h3>Dosya Yükle ve QR Kodunu Oluştur</h3>
+      <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.pdf" />
+      <div id="filePreview"></div>
+      <button id="generateFileLinkBtn" disabled>Dosya Linkinden QR Oluştur</button>
+      <div id="uploadStatus"></div>
+    </section>
+
+    <section id="qrScanner" class="card">
+      <h3>QR Kod Tara</h3>
+      <video id="video" autoplay muted playsinline></video>
+      <canvas id="videoCanvas" style="display:none;"></canvas>
+      <div id="scanResult">Kamera kapalı</div>
+      <div class="btn-row">
+        <button id="startCameraBtn">Kamerayı Aç</button>
+        <button id="stopCameraBtn" disabled>Kamerayı Kapat</button>
+        <button id="copyScanBtn" disabled>Metni Kopyala</button>
+        <button id="capturePhotoBtn" disabled>Fotoğraf Çek</button>
+      </div>
+      <div id="cameraPhotos"></div>
+    </section>
+
+    <section id="favorites" class="card">
+      <h3>Favoriler</h3>
+      <input type="text" id="favSearchInput" placeholder="Favorilerde ara..." />
+      <ul id="favoritesList"></ul>
+      <button id="clearFavsBtn">Favorileri Temizle</button>
+    </section>
+
+    <section id="scanHistorySection" class="card">
+      <h3>Tarama Geçmişi</h3>
+      <ul id="scanHistoryList"></ul>
+    </section>
+
+  </div>
+
+  <!-- Kütüphaneler -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
